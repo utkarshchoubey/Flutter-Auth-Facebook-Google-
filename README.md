@@ -1,6 +1,7 @@
 # flutter_demo
 
-A new Flutter application.
+My First Flutter Application
+(Quiz and Facebook Auth using Firebase)
 
 To View Quiz 
 change in main.dart file
