@@ -7,7 +7,7 @@ change in main.dart file
 from:
 home: new MyMainPage()
 to:
-home : new Landing Page()
+home : new LandingPage()
 
 To Login via Facebook 
 Clone this Repository 
