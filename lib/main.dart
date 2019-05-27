@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ProfileScreen.dart';
+import 'emailAuth/pages/root_page.dart';
+import 'emailAuth/services/authentication.dart';
 import 'landing_page.dart';
 import 'quiz_page.dart';
 import 'score_page.dart';
@@ -8,10 +10,11 @@ import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'googledemo.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 void main(){
   runApp(new MaterialApp(
-    home: new GoogleSignApp(),
+    home:  new RootPage(auth: new Auth()),
   ));
 }
 
