@@ -15,6 +15,8 @@ To Login via Google
 change in main.dart file
 home : new GoogleSignApp()
 
+Email password authentication added
+
 
 Clone this Repository 
 if you are using android Studio 
