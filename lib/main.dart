@@ -1,17 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'profile_screen.dart';
 import 'emailAuth/pages/root_page.dart';
 import 'emailAuth/services/authentication.dart';
-import 'googledemo.dart';
-import 'landing_page.dart';
-import 'quiz_page.dart';
-import 'score_page.dart';
+//import 'googledemo.dart';
+//import 'landing_page.dart';
+//import 'quiz_page.dart';
+//import 'score_page.dart';
+//import 'package:firebase_database/firebase_database.dart';
 
 void main() {
   runApp(new MaterialApp(
