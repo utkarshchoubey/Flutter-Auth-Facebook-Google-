@@ -1,15 +1,14 @@
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'main.dart';
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget{
+class ProfileScreen extends StatelessWidget {
   final UserDetails detailsUser;
 
-  ProfileScreen({Key key,@required this.detailsUser}): super(key: key);
+  ProfileScreen({Key key, @required this.detailsUser}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final GoogleSignIn _gSignIn=GoogleSignIn();
+    final GoogleSignIn _gSignIn = GoogleSignIn();
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -18,9 +17,9 @@ class ProfileScreen extends StatelessWidget{
         actions: <Widget>[
           IconButton(
             icon: Icon(
-                Icons.power_settings_new,
+              Icons.power_settings_new,
             ),
-            onPressed: (){
+            onPressed: () {
               _gSignIn.signOut();
               print("Signed Out");
               Navigator.pop(context);
@@ -28,28 +27,32 @@ class ProfileScreen extends StatelessWidget{
           )
         ],
       ),
-
-
       body: Center(
         child: Column(
           children: <Widget>[
             CircleAvatar(
               backgroundImage: NetworkImage(detailsUser.photoUrl),
-              radius:50.0,
+              radius: 50.0,
             ),
             SizedBox(height: 10.0),
             Text("Name :" + detailsUser.userName,
-            style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20.0)),
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 20.0)),
             Text("Email :" + detailsUser.userEmail,
-                style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20.0)),
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 20.0)),
             Text("Provider :" + detailsUser.providerDetails,
-                style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20.0)),
-
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 20.0)),
           ],
         ),
       ),
     );
   }
-
-
 }

@@ -7,13 +7,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter_demo/landing_page.dart';
 import 'package:flutter_demo/main.dart';
+import 'package:flutter_demo/emailAuth/pages/root_page.dart';
+import 'package:flutter_demo/emailAuth/services/authentication.dart';
+
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+
+    await tester.pumpWidget(RootPage(auth: new Auth()));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
