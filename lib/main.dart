@@ -40,7 +40,6 @@ class MyPageState extends State<MyMainPage> {
   //Facebook Auth
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text(isLogged ? "Profile Page" : "Facebook login Example"),
@@ -126,7 +125,6 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Builder(
           builder: (context) => Stack(

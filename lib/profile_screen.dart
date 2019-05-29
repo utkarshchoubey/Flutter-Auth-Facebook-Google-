@@ -9,7 +9,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoogleSignIn _gSignIn = GoogleSignIn();
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text(detailsUser.userName),

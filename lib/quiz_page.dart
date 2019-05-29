@@ -42,7 +42,6 @@ class QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Stack(
       fit: StackFit.expand,
       children: <Widget>[

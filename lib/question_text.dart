@@ -32,7 +32,6 @@ class QuestionTextState extends State<QuestionText>
 
   @override
   void didUpdateWidget(QuestionText oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (oldWidget._question != widget._question) {
       _fontSizeAnimationController.reset();
@@ -42,7 +41,6 @@ class QuestionTextState extends State<QuestionText>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Material(
         child: new Padding(
       padding: new EdgeInsets.symmetric(vertical: 20.0),

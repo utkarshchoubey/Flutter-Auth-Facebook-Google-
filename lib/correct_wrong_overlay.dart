@@ -34,7 +34,6 @@ class CorrectWrongOverlayState extends State<CorrectWrongOverlay>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Material(
       color: Colors.black54,
       child: new InkWell(

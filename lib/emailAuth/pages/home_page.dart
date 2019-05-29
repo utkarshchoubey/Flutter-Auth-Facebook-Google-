@@ -18,9 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-//  final FirebaseDatabase _database = FirebaseDatabase.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-//  final _textEditingController = TextEditingController();
   bool _isEmailVerified = false;
 
   @override
