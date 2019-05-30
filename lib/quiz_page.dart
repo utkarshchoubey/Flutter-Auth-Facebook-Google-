@@ -6,14 +6,15 @@ import 'answer_button.dart';
 import 'question_text.dart';
 import 'correct_wrong_overlay.dart';
 import 'score_page.dart';
-class QuizPage extends StatefulWidget{
-@override
-  State createState() => new QuizPageState();
 
+class quiz_page extends StatefulWidget {
+  @override
+  State createState() => new quiz_pageState();
 }
-class QuizPageState extends State<QuizPage>{
+
+class quiz_pageState extends State<quiz_page> {
   Question currentQuestion;
-  Quiz quiz=new Quiz([
+  Quiz quiz = new Quiz([
     new Question("Utkarsh is Cool?", true),
     new Question("Elon Mask is a human?", false),
     new Question("Pizza is healthy", false),
@@ -22,48 +23,56 @@ class QuizPageState extends State<QuizPage>{
   String questionText;
   int questionNumber;
   bool isCorrect;
-  bool overlay_should_be_visible=false;
+  bool overlay_should_be_visible = false;
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    currentQuestion=quiz.nextQuestion;
-    questionNumber=quiz.questionNumber;
-    questionText=currentQuestion.question;
+    currentQuestion = quiz.nextQuestion;
+    questionNumber = quiz.questionNumber;
+    questionText = currentQuestion.question;
   }
-  void handleAnswer(bool answer){
-    isCorrect=(currentQuestion.ans==answer);
+
+  void handleAnswer(bool answer) {
+    isCorrect = (currentQuestion.ans == answer);
     quiz.answer(isCorrect);
-    this.setState((){
-      overlay_should_be_visible=true;
+    this.setState(() {
+      overlay_should_be_visible = true;
     });
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Stack(
       fit: StackFit.expand,
-    children: <Widget>[
-      new Column(
-        children: <Widget>[
-          new AnswerButton(true,(){handleAnswer(true);}),
-          new QuestionText(questionText,questionNumber),
-          new AnswerButton(false,(){handleAnswer(false);}),
-        ],
-      ),
-      overlay_should_be_visible==true ? new CorrectWrongOverlay(isCorrect,(){
-        if(quiz.length==questionNumber){
-          Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new ScorePage(quiz.score, quiz.length)));
-              return;
-        }
-        currentQuestion=quiz.nextQuestion;
-        this.setState((){
-          overlay_should_be_visible=false;
-          questionText=currentQuestion.question;
-          questionNumber=quiz.questionNumber;
-        });
-      }):new Container(),
-    ],
+      children: <Widget>[
+        new Column(
+          children: <Widget>[
+            new AnswerButton(true, () {
+              handleAnswer(true);
+            }),
+            new question_text(questionText, questionNumber),
+            new AnswerButton(false, () {
+              handleAnswer(false);
+            }),
+          ],
+        ),
+        overlay_should_be_visible == true
+            ? new CorrectWrongOverlay(isCorrect, () {
+                if (quiz.length == questionNumber) {
+                  Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          new score_page(quiz.score, quiz.length)));
+                  return;
+                }
+                currentQuestion = quiz.nextQuestion;
+                this.setState(() {
+                  overlay_should_be_visible = false;
+                  questionText = currentQuestion.question;
+                  questionNumber = quiz.questionNumber;
+                });
+              })
+            : new Container(),
+      ],
     );
   }
 }
