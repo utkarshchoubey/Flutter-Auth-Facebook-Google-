@@ -11,8 +11,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_demo/main.dart';
 
 void main() {
-  testWidgets(WidgetTester tester) async {
-    await tester.pump();
 
-  };
+  Widget MakeTestableWidget({Widget child}){
+    return MaterialApp(
+      home: child,
+    );
+  }
+
+  testWidgets('',(WidgetTester tester) async {
+    facebook_auth page= facebook_auth();
+    await tester.pumpWidget(MakeTestableWidget(child : page));
+
+  });
 }
