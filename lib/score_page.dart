@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'landing_page.dart';
 
-class ScorePage extends StatelessWidget {
+class score_page extends StatelessWidget {
   final int score;
   final int totalQuestion;
-  ScorePage(this.score, this.totalQuestion);
+  score_page(this.score, this.totalQuestion);
   @override
   Widget build(BuildContext context) {
     return new Material(

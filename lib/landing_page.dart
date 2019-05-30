@@ -9,7 +9,7 @@ class LandingPage extends StatelessWidget {
       color: Color.fromARGB(255, 255, 25, 255),
       child: InkWell(
         onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new QuizPage())),
+            builder: (BuildContext context) => new quiz_page())),
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

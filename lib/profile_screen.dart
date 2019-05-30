@@ -2,10 +2,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'main.dart';
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  final UserDetails detailsUser;
+class profile_screen extends StatelessWidget {
+  final user_details detailsUser;
 
-  ProfileScreen({Key key, @required this.detailsUser}) : super(key: key);
+  profile_screen({Key key, @required this.detailsUser}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final GoogleSignIn _gSignIn = GoogleSignIn();

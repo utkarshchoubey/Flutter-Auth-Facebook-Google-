@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
             new FlatButton(
                 child: new Text('Logout',
                     style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-                onPressed: _signOut)
+                onPressed: _sign_out)
           ,
           ],
         ),
@@ -42,20 +42,20 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _checkEmailVerification();
+    _check_email_verification();
 
   }
 
-  void _checkEmailVerification() async {
+  void _check_email_verification() async {
     _isEmailVerified = await widget.auth.isEmailVerified();
     if (!_isEmailVerified) {
       _showVerifyEmailDialog();
     }
   }
 
-  void _resentVerifyEmail(){
+  void _resent_verify_email(){
     widget.auth.sendEmailVerification();
-    _showVerifyEmailSentDialog();
+    _show_verify_email_sent_dialog();
   }
 
   void _showVerifyEmailDialog() {
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               child: new Text("Resent link"),
               onPressed: () {
                 Navigator.of(context).pop();
-                _resentVerifyEmail();
+                _resent_verify_email();
               },
             ),
             new FlatButton(
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  void _showVerifyEmailSentDialog() {
+  void _show_verify_email_sent_dialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  _signOut() async {
+  _sign_out() async {
     try {
       await widget.auth.signOut();
       widget.onSignedOut();

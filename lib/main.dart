@@ -14,7 +14,7 @@ import 'emailAuth/services/authentication.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: new RootPage(auth: new Auth()),
+    home: new facebook_auth(),
   ));
 }
 //Email Auth -  RootPage(auth: new Auth())
@@ -22,19 +22,19 @@ void main() {
 //Google Auth - GoogleSignApp()
 //Quiz App - LandingPage()
 
-class GoogleSignApp extends StatefulWidget {
+class google_sign_app extends StatefulWidget {
   @override
-  _GoogleSignAppState createState() => _GoogleSignAppState();
+  _google_sign_appState createState() => _google_sign_appState();
 }
 
-class MyMainPage extends StatefulWidget {
+class facebook_auth extends StatefulWidget {
   @override
-  MyPageState createState() => MyPageState();
+  facebook_auth_state createState() => facebook_auth_state();
 }
 
-class MyPageState extends State<MyMainPage> {
+class facebook_auth_state extends State<facebook_auth> {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  bool isLogged = false;
+  bool is_logged = false;
   FirebaseUser myUser;
 
   //Facebook Auth
@@ -42,18 +42,18 @@ class MyPageState extends State<MyMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(isLogged ? "Profile Page" : "Facebook login Example"),
+        title: Text(is_logged ? "Profile Page" : "Facebook login Example"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.power_settings_new),
             onPressed: () {
-              _LogOut();
+              _log_out();
             },
           )
         ],
       ),
       body: Center(
-        child: isLogged
+        child: is_logged
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -61,19 +61,9 @@ class MyPageState extends State<MyMainPage> {
                   Image.network(myUser.photoUrl),
                 ],
               )
-            : FacebookSignInButton(onPressed: _LogIn),
+            : FacebookSignInButton(onPressed: _loginWithFacebook),
       ),
     );
-  }
-
-  void _LogIn() {
-    _loginWithFacebook().then((response) {
-      if (response != null) {
-        myUser = response;
-        isLogged = true;
-        setState(() {});
-      }
-    });
   }
 
   Future<FirebaseUser> _loginWithFacebook() async {
@@ -86,35 +76,41 @@ class MyPageState extends State<MyMainPage> {
           accessToken: result.accessToken.token);
       FirebaseUser firebaseUser =
           await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (firebaseUser != null) {
+        myUser = firebaseUser;
+        is_logged = true;
+        setState(() {});
+      }
       return firebaseUser;
     }
     return null;
   }
 
-  void _LogOut() async {
+  void _log_out() async {
     await _auth.signOut().then((response) {
-      isLogged = false;
+      is_logged = false;
       setState(() {});
     });
   }
 }
 
-class ProviderDetails {
+class provider_details {
   final String providerDetails;
-  ProviderDetails(this.providerDetails);
+  provider_details(this.providerDetails);
 }
 
-class UserDetails {
+class user_details {
   final String providerDetails;
   final String userName;
   final String photoUrl;
   final String userEmail;
-  final List<ProviderDetails> providerData;
-  UserDetails(this.providerDetails, this.userName, this.photoUrl,
+  final List<provider_details> providerData;
+  user_details(this.providerDetails, this.userName, this.photoUrl,
       this.userEmail, this.providerData);
 }
 
-class _GoogleSignAppState extends State<GoogleSignApp> {
+class _google_sign_appState extends State<google_sign_app> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn(
     scopes: [
@@ -192,10 +188,10 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
 
     FirebaseUser userDetails =
         await _firebaseAuth.signInWithCredential(credentials);
-    ProviderDetails providerInfo = new ProviderDetails(userDetails.providerId);
-    List<ProviderDetails> providerData = new List<ProviderDetails>();
+    provider_details providerInfo = new provider_details(userDetails.providerId);
+    List<provider_details> providerData = new List<provider_details>();
     providerData.add(providerInfo);
-    UserDetails details = new UserDetails(
+    user_details details = new user_details(
         userDetails.providerId,
         userDetails.displayName,
         userDetails.photoUrl,
@@ -205,7 +201,7 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
     Navigator.push(
       context,
       new MaterialPageRoute(
-          builder: (context) => new ProfileScreen(detailsUser: details)),
+          builder: (context) => new profile_screen(detailsUser: details)),
     );
     return userDetails;
   }

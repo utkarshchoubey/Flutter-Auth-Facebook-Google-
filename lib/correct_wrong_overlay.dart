@@ -27,7 +27,7 @@ class CorrectWrongOverlayState extends State<CorrectWrongOverlay>
   }
 
   @override
-  void despose() {
+  void dispose() {
     _iconAnimationController.dispose();
     super.dispose();
   }

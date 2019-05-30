@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class QuestionText extends StatefulWidget {
+class question_text extends StatefulWidget {
   final String _question;
   final int _questionNumber;
-  QuestionText(this._question, this._questionNumber);
+  question_text(this._question, this._questionNumber);
   @override
-  State createState() => new QuestionTextState();
+  State createState() => new question_textState();
 }
 
-class QuestionTextState extends State<QuestionText>
+class question_textState extends State<question_text>
     with SingleTickerProviderStateMixin {
   Animation<double> _fontSizeAnimation;
   AnimationController _fontSizeAnimationController;
@@ -25,13 +25,13 @@ class QuestionTextState extends State<QuestionText>
   }
 
   @override
-  void despose() {
+  void dispose() {
     _fontSizeAnimationController.dispose();
     super.dispose();
   }
 
   @override
-  void didUpdateWidget(QuestionText oldWidget) {
+  void didUpdateWidget(question_text oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget._question != widget._question) {
       _fontSizeAnimationController.reset();

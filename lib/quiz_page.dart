@@ -7,12 +7,12 @@ import 'question_text.dart';
 import 'correct_wrong_overlay.dart';
 import 'score_page.dart';
 
-class QuizPage extends StatefulWidget {
+class quiz_page extends StatefulWidget {
   @override
-  State createState() => new QuizPageState();
+  State createState() => new quiz_pageState();
 }
 
-class QuizPageState extends State<QuizPage> {
+class quiz_pageState extends State<quiz_page> {
   Question currentQuestion;
   Quiz quiz = new Quiz([
     new Question("Utkarsh is Cool?", true),
@@ -50,7 +50,7 @@ class QuizPageState extends State<QuizPage> {
             new AnswerButton(true, () {
               handleAnswer(true);
             }),
-            new QuestionText(questionText, questionNumber),
+            new question_text(questionText, questionNumber),
             new AnswerButton(false, () {
               handleAnswer(false);
             }),
@@ -61,7 +61,7 @@ class QuizPageState extends State<QuizPage> {
                 if (quiz.length == questionNumber) {
                   Navigator.of(context).push(new MaterialPageRoute(
                       builder: (BuildContext context) =>
-                          new ScorePage(quiz.score, quiz.length)));
+                          new score_page(quiz.score, quiz.length)));
                   return;
                 }
                 currentQuestion = quiz.nextQuestion;
