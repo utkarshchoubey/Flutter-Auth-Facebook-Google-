@@ -1,7 +1,8 @@
 # flutter_demo
 
 My First Flutter Application
-(Quiz , Facebook Auth using Firebase , Google Auth using Firebase)
+(Quiz , Facebook Auth using Firebase , Google Auth using Firebase
+Email Auth Using Firebase , Audio Recording Implemented)
 
 To View Quiz 
 change in main.dart file
@@ -16,6 +17,8 @@ change in main.dart file
 home : new GoogleSignApp()
 
 Email password authentication added
+
+Audio Recording Implemented
 
 
 Clone this Repository 
