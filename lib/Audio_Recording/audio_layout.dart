@@ -3,8 +3,6 @@ import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'dart:io';
-import 'android_encoder.dart';
-import 'ios_quality.dart';
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
 
@@ -24,7 +22,6 @@ class _MyAppState extends State<MyApp> {
   String _recorderTxt = '00:00:00';
   String _playerTxt = '00:00:00';
   double _dbLevel;
-
   double slider_current_position = 0.0;
   double max_duration = 1.0;
 
