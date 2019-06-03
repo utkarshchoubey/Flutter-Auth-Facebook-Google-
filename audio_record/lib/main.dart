@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:intl/date_symbol_data_local.dart';
+import 'dart:math';
 
 import 'dart:io';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
 
@@ -39,12 +42,15 @@ class _MyAppState extends State<MyApp> {
     flutterSound.setDbPeakLevelUpdate(0.8);
     flutterSound.setDbLevelEnabled(true);
     initializeDateFormatting();
+
   }
 
   void startRecorder() async{
     try {
-      String path = await flutterSound.startRecorder(null);
-      print('startRecorder: $path');
+      final _random = new Random();
+      int next = _random.nextInt(10000);
+      String path = await flutterSound.startRecorder("hello")+ '$next';
+      print('startRecorder: $path + $next');
 
       _recorderSubscription = flutterSound.onRecorderStateChanged.listen((e) {
         DateTime date = new DateTime.fromMillisecondsSinceEpoch(
@@ -137,6 +143,8 @@ class _MyAppState extends State<MyApp> {
       print('error: $err');
     }
   }
+
+
 
   void pausePlayer() async{
     String result = await flutterSound.pausePlayer();

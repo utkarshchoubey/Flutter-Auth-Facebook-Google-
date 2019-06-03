@@ -32,6 +32,7 @@ dependencies:
   firebase_core: ^0.4.0+1
   flutter_sound: ^1.0.6
   intl: ^0.15.6
+  path_provider: ^1.1.0
 
 
 dev_dependencies:

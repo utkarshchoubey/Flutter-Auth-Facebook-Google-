@@ -5,6 +5,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter_sound/flutter_sound.dart';
+import 'package:path_provider/path_provider.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -38,7 +39,8 @@ class _MyAppState extends State<MyApp> {
 
   void startRecorder() async{
     try {
-      String path = await flutterSound.startRecorder(null);
+      Directory appDocDir = await getTemporaryDirectory();
+      String path = await flutterSound.startRecorder(appDocDir.path + "/1.m4a");
       print('startRecorder: $path');
 
       _recorderSubscription = flutterSound.onRecorderStateChanged.listen((e) {
@@ -90,7 +92,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void startPlayer() async{
-    String path = await flutterSound.startPlayer(null);
+    Directory appDocDir = await getTemporaryDirectory();
+    String path = await flutterSound.startPlayer(appDocDir.path + "/1.m4a");
     await flutterSound.setVolume(1.0);
     print('startPlayer: $path');
 
