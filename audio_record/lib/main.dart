@@ -33,7 +33,6 @@ class _MyAppState extends State<MyApp> {
   double slider_current_position = 0.0;
   double max_duration = 1.0;
 
-
   @override
   void initState() {
     super.initState();
@@ -104,14 +103,11 @@ class _MyAppState extends State<MyApp> {
     String path = await flutterSound.startPlayer(null);
     await flutterSound.setVolume(1.0);
     print('startPlayer: $path');
-
     try {
       _playerSubscription = flutterSound.onPlayerStateChanged.listen((e) {
         if (e != null) {
           slider_current_position = e.currentPosition;
           max_duration = e.duration;
-
-
           DateTime date = new DateTime.fromMillisecondsSinceEpoch(
               e.currentPosition.toInt(),
               isUtc: true);
@@ -135,7 +131,6 @@ class _MyAppState extends State<MyApp> {
         _playerSubscription.cancel();
         _playerSubscription = null;
       }
-
       this.setState(() {
         this._isPlaying = false;
       });
@@ -143,8 +138,6 @@ class _MyAppState extends State<MyApp> {
       print('error: $err');
     }
   }
-
-
 
   void pausePlayer() async{
     String result = await flutterSound.pausePlayer();
