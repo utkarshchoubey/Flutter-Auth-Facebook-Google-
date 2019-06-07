@@ -6,7 +6,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'profile_screen.dart';
 import 'emailAuth/pages/root_page.dart';
 import 'emailAuth/services/authentication.dart';
-//import 'googledemo.dart';
+import 'Audio_Recording/audio_layout.dart';
+import 'googledemo.dart';
 //import 'landing_page.dart';
 //import 'quiz_page.dart';
 //import 'score_page.dart';
@@ -14,7 +15,7 @@ import 'emailAuth/services/authentication.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: new facebook_auth(),
+    home: google_sign_app(),
   ));
 }
 //Email Auth -  RootPage(auth: new Auth())
